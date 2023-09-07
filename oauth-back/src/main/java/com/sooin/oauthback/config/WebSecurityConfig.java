@@ -32,10 +32,11 @@ public class WebSecurityConfig {
       .httpBasic().disable()
       .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
       .authorizeRequests()
-      .antMatchers("/", "/auth/**", "/oauth2/**").permitAll()
+      .antMatchers("/", "/api/v1/auth/**", "/oauth2/**").permitAll()
       .anyRequest().authenticated().and()
       .oauth2Login()
       .redirectionEndpoint().baseUri("/oauth2/callback/*").and()
+      .authorizationEndpoint().baseUri("/api/v1/auth/social")
       .userInfoEndpoint().userService(oAuth2UserService).and()
       .successHandler(oAuth2SuccessHandler);
 
