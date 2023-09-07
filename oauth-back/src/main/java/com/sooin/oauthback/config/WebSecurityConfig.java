@@ -36,7 +36,7 @@ public class WebSecurityConfig {
       .anyRequest().authenticated().and()
       .oauth2Login()
       .redirectionEndpoint().baseUri("/oauth2/callback/*").and()
-      .authorizationEndpoint().baseUri("/api/v1/auth/social")
+      .authorizationEndpoint().baseUri("/api/v1/auth/social").and()
       .userInfoEndpoint().userService(oAuth2UserService).and()
       .successHandler(oAuth2SuccessHandler);
 
